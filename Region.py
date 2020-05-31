@@ -15,6 +15,7 @@ data=download.drop(columns=["lat","long","codice_regione",
 data=data.rename(columns={"denominazione_regione" : "regione",
     "dimessi_guariti":"guariti"})
 
-print(data.tail(21))
-print(data["deceduti"].tail(21)/data["totale_casi"].tail(21))
 
+data["ratio"]=data["deceduti"].tail(21)/data["totale_casi"].tail(21)
+#print(data["deceduti"].tail(21)/data["totale_casi"].tail(21))
+print(data.tail(21))
