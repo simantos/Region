@@ -6,4 +6,15 @@ area = regioni[regioni["denominazione_regione"]== regione1]
 morti=(area["deceduti"])
 totale_positivi=(area["totale_positivi"])
 dimessi_guariti=(area["dimessi_guariti"])
+pd.set_option('display.max_rows', None)
+data=download.drop(columns=["lat","long","codice_regione",
+      "ricoverati_con_sintomi","totale_ospedalizzati","terapia_intensiva",
+      "isolamento_domiciliare","variazione_totale_positivi","tamponi",
+      "casi_testati","nuovi_positivi","totale_positivi","note_it","note_en","stato","data"])
+
+data=data.rename(columns={"denominazione_regione" : "regione",
+    "dimessi_guariti":"guariti"})
+
+print(data.tail(21))
+print(data["deceduti"].tail(21)/data["totale_casi"].tail(21))
 
